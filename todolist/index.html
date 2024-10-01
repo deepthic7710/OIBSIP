@@ -1,0 +1,181 @@
+<html>
+  <head>
+    <title>To-Do List</title>
+    <style>
+      body {
+        background: linear-gradient(300deg, #e7cccc, #ede8dc, #d19696);
+        background-size: 180% 180%;
+        animation: gradient-animation 10s ease infinite;
+      }
+
+      @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      body {
+        margin-left: 100px;
+        margin-right: 100px;
+        margin-top: 30px;
+      }
+      h1 {
+        text-align: center;
+      }
+
+      #container {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 30px;
+      }
+
+      #cont1 {
+        background-color: #ede8dc;
+        border-radius: 30px;
+        padding: 20px;
+      }
+
+      #contcomb {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      #cont2,
+      #cont3 {
+        border-radius: 30px;
+        background-color: #ede8dc;
+        padding: 20px;
+      }
+
+      input[type="button"] {
+        background-color: #d19696;
+        border-radius: 10px;
+        margin-left: 5px;
+      }
+
+      input[type="text"] {
+        margin-bottom: 10px;
+      }
+
+      li {
+        list-style-type: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gradient-background">
+      <h1>To Do List</h1>
+
+      <div id="container">
+        <div id="cont1">
+          <form id="taskForm">
+            <p>Work to be done:</p>
+            <ul>
+              <li>
+                <input type="text" id="newTask" placeholder="Enter task" />
+                <input type="button" value="Enter" id="enterTask" />
+                <input type="button" value="Clear" id="clearTask" />
+              </li>
+            </ul>
+          </form>
+        </div>
+        <div id="contcomb">
+          <div id="cont2">
+            <p>Completed tasks:</p>
+            <ul id="completedTasks">
+              <!-- Completed tasks will appear here -->
+            </ul>
+          </div>
+
+          <div id="cont3">
+            <p>Pending tasks:</p>
+            <ul id="pendingTasks">
+              <!-- Pending tasks will appear here -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get references to elements
+      const newTaskInput = document.getElementById("newTask");
+      const enterTaskButton = document.getElementById("enterTask");
+      const clearTaskButton = document.getElementById("clearTask");
+      const pendingTasksList = document.getElementById("pendingTasks");
+      const completedTasksList = document.getElementById("completedTasks");
+      const taskForm = document.getElementById("taskForm");
+
+      // Prevent form submission (Enter key default behavior)
+      taskForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form from submitting
+      });
+
+      // Prevent page refresh when "Enter" is pressed inside the input
+      newTaskInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault(); // Prevent default behavior of submitting
+          addTask(); // Call the function to add the task
+        }
+      });
+
+      // Function to format date and time
+      function getFormattedDateTime() {
+        const now = new Date();
+        return `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+      }
+
+      // Add task to the pending list
+      enterTaskButton.addEventListener("click", addTask);
+
+      function addTask() {
+        const taskDescription = newTaskInput.value.trim();
+        if (taskDescription !== "") {
+          const li = document.createElement("li");
+          li.innerHTML = `${taskDescription} <br><small>Added: ${getFormattedDateTime()}</small>`;
+
+          // Add checkbox for marking task as complete
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.addEventListener("change", function () {
+            if (this.checked) {
+              markTaskAsCompleted(li);
+            }
+          });
+
+          li.appendChild(checkbox);
+          pendingTasksList.appendChild(li);
+          newTaskInput.value = ""; // Clear input
+        }
+      }
+
+      // Clear tasks from both lists
+      clearTaskButton.addEventListener("click", function () {
+        pendingTasksList.innerHTML = ""; // Clear pending tasks
+        completedTasksList.innerHTML = ""; // Clear completed tasks
+      });
+
+      // Mark task as completed
+      function markTaskAsCompleted(taskItem) {
+        const completedTask = taskItem.cloneNode(true); // Clone the task item
+        const dateCompleted = document.createElement("small");
+        dateCompleted.innerHTML = `<br>Completed: ${getFormattedDateTime()}`;
+        completedTask.appendChild(dateCompleted);
+
+        completedTask.querySelector('input[type="checkbox"]').remove(); // Remove checkbox
+        completedTasksList.appendChild(completedTask);
+        taskItem.remove(); // Remove from pending list
+      }
+    </script>
+  </body>
+</html>

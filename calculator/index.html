@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>calculator</title>
+    <style>
+        body {
+    background-image: url("backgroundimage.jpeg");;
+    background-size: cover; /* Optional: Ensures the image covers the entire background */
+    background-position: center; /* Optional: Centers the background image */
+}
+
+        h1 {
+           text-align: center;
+           font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+           color: #8D493A;
+           
+        }
+        .wholething {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+           
+        }
+        
+        .container {
+            display: grid;
+            gap: 10px;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 300px;
+            padding: 20px;
+            background-color:#D0B8A8 ;
+           
+            border-radius: 30px;
+            
+        }
+        input {
+            grid-area: 1/1/1/4;
+            margin-bottom: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+        button {   
+            background-color: #DFD3C3;
+            width:100%;
+            height:70px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Simple Calculator</h1>
+  <div class="wholething">
+        <form>
+            <div class="container">
+            <input class="input" type="text" id="display" readonly></input>
+            <button type="button" value="1" onclick="addToDisplay('1')">1</button>
+            <button type="button" value="2" onclick="addToDisplay('2')">2</button>
+            <button type="button" value="3" onclick="addToDisplay('3')">3</button>
+            <button type="button" value="4" onclick="addToDisplay('4')">4</button>
+            <button type="button" value="5" onclick="addToDisplay('5')">5</button>
+            <button type="button" value="6" onclick="addToDisplay('6')">6</button>
+            <button type="button" value="7" onclick="addToDisplay('7')">7</button>
+            <button type="button" value="8" onclick="addToDisplay('8')">8</button>
+            <button type="button" value="9" onclick="addToDisplay('9')">9</button>
+            <button type="button" value="0" onclick="addToDisplay('0')">0</button>
+            <button type="button" value="+" onclick="addToDisplay('+')">+</button>
+            <button type="button" value="-" onclick="addToDisplay('-')">-</button>
+            <button type="button" value="/" onclick="addToDisplay('/')">/</button>
+            <button type="button" value="*" onclick="addToDisplay('*')">*</button>
+            <button type="button" value="=" onclick="calculateResult()">=</button>
+            <button type="button" value="C" onclick="clearDisplay()">clear</button>
+            <button type="button" value="(" onclick="addToDisplay('(')" >(</button>
+            <button type="button" value=")" onclick="addToDisplay(')')">)</button>
+
+        </div>
+        </form>
+    </div>
+    <script>
+         // Function to add value to the display
+         function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        // Function to clear the display
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculateResult() {
+            let expression = document.getElementById('display').value;
+            try {
+                // Use eval to calculate the result
+                let result = eval(expression);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+  </body>
+</html>

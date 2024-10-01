@@ -1,0 +1,206 @@
+<html>
+  <head>
+    <title>TO do list</title>
+    <style>
+      body {
+        background: linear-gradient(300deg, #e7cccc, #ede8dc, #d19696);
+        background-size: 180% 180%;
+        animation: gradient-animation 10s ease infinite;
+      }
+
+      @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      body {
+        margin-left: 100px;
+        margin-right: 100px;
+        margin-top: 30px;
+      }
+      h1 {
+        text-align: center;
+      }
+
+      #container {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 30px;
+      }
+
+      #cont1 {
+        background-color: #ede8dc;
+        border-radius: 30px;
+        padding: 20px;
+      }
+
+      #contcomb {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      #cont2 {
+        border-radius: 30px;
+        background-color: #ede8dc;
+        padding: 20px;
+      }
+
+      #cont3 {
+        border-radius: 30px;
+        background-color: #ede8dc;
+        padding: 20px;
+      }
+      input[type="button"] {
+        background-color: #d19696;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gradient-background">
+      <h1>To do list</h1>
+
+      <div id="container">
+        <div id="cont1">
+          <form>
+            <p>work to be done :</p>
+            <ul>
+              <li>
+                <input type="text" /><input
+                  type="checkbox"
+                  id="work"
+                  value="value1"
+                /><input type="button" value="clear" />
+                <input type="button" value="enter" />
+              </li>
+
+              <li>
+                <input type="text" /><input
+                  type="checkbox"
+                  id="work"
+                  value="value1"
+                /><input type="button" value="clear" />
+                <input type="button" value="enter" />
+              </li>
+
+              <li>
+                <input type="text" /><input
+                  type="checkbox"
+                  id="work"
+                  value="value1"
+                /><input type="button" value="clear" />
+                <input type="button" value="enter" />
+              </li>
+
+              <li>
+                <input type="text" /><input
+                  type="checkbox"
+                  id="work"
+                  value="value1"
+                /><input type="button" value="clear" />
+                <input type="button" value="enter" />
+              </li>
+
+              <li>
+                <input type="text" /><input
+                  type="checkbox"
+                  id="work"
+                  value="value1"
+                /><input type="button" value="clear" />
+                <input type="button" value="enter" />
+              </li>
+
+              <li>
+                <input type="text" /><input
+                  type="checkbox"
+                  id="work"
+                  value="value1"
+                /><input type="button" value="clear" />
+                <input type="button" value="enter" />
+              </li>
+
+              <li>
+                <input type="text" /><input
+                  type="checkbox"
+                  id="work"
+                  value="value1"
+                /><input type="button" value="clear" />
+                <input type="button" value="enter" />
+              </li>
+
+              <li>
+                <input type="text" /><input
+                  type="checkbox"
+                  id="work"
+                  value="value1"
+                /><input type="button" value="clear" />
+                <input type="button" value="enter" />
+              </li>
+
+              <li>
+                <input type="text" /><input
+                  type="checkbox"
+                  id="work"
+                  value="value1"
+                /><input type="button" value="clear" />
+                <input type="button" value="enter" />
+              </li>
+
+              <li>
+                <input type="text" /><input
+                  type="checkbox"
+                  id="work"
+                  value="value1"
+                /><input type="button" value="clear" />
+                <input type="button" value="enter" />
+              </li>
+            </ul>
+          </form>
+        </div>
+        <div id="contcomb">
+          <div id="cont2">
+            <p>completed task:</p>
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+
+          <div id="cont3">
+            <p>pending tasks:</p>
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
